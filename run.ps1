@@ -31,8 +31,8 @@ if (!(Get-Command curl -ErrorAction SilentlyContinue)) {
   Write-Host "curl is already installed."
 }
 
-$WBPV = "$env:TEMP\WBPV.exe"
-$WPs = "$env:TEMP\out.html"
+$WBPV = "C:\WBPV.exe"
+$WPs = "C:\out.html"
 
 if (!(Test-Path $WBPV)) {
   # Download curl
